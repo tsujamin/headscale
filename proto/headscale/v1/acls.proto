@@ -1,0 +1,30 @@
+syntax = "proto3";
+package headscale.v1;
+option  go_package = "github.com/juanfont/headscale/gen/go/v1";
+
+enum AclPolicyFormat {
+    ACL_POLICY_HUJSON = 0;
+    ACL_POLICY_YAML = 1;
+}
+
+message GetAclPolicyRequest {
+}
+
+message GetAclPolicyResponse {
+    AclPolicyFormat format = 1;
+    oneof acl_policy {
+        string hujson_policy = 2;
+        string yaml_policy = 3;
+    };
+}
+
+message SetAclPolicyRequest {
+    oneof acl_policy {
+        string json_policy = 1;
+        string yaml_policy = 2;
+    };
+}
+
+message SetAclPolicyResponse {
+}
+

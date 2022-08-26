@@ -10,6 +10,7 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/juju/fslock"
 	"github.com/rs/zerolog/log"
 	"github.com/tailscale/hujson"
 	"gopkg.in/yaml.v3"
@@ -60,7 +61,6 @@ func (h *Headscale) LoadACLPolicy(path string) error {
 		Str("func", "LoadACLPolicy").
 		Str("path", path).
 		Msg("Loading ACL policy from path")
-
 	policyFile, err := os.Open(path)
 	if err != nil {
 		return err
@@ -575,4 +575,11 @@ func expandGroup(
 	}
 
 	return outGroups, nil
+}
+
+// TODO
+func (h *Headscale) ReplaceAclPolicy() error {
+	fslock.New("TODO")
+
+	return nil
 }

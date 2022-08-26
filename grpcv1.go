@@ -1,4 +1,4 @@
-//nolint
+// nolint
 package headscale
 
 import (
@@ -494,6 +494,20 @@ func (api headscaleV1APIServer) DebugCreateMachine(
 	)
 
 	return &v1.DebugCreateMachineResponse{Machine: newMachine.toProto()}, nil
+}
+
+func (api headscaleV1APIServer) GetAclPolicy(
+	ctx context.Context,
+	request *v1.GetAclPolicyRequest,
+) (*v1.GetAclPolicyResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "Not Implemented")
+}
+
+func (api headscaleV1APIServer) SetAclPolicy(
+	ctx context.Context,
+	request *v1.SetAclPolicyRequest,
+) (*v1.SetAclPolicyResponse, error) {
+	return nil, status.Error(codes.Unimplemented, "Not Implemented")
 }
 
 func (api headscaleV1APIServer) mustEmbedUnimplementedHeadscaleServiceServer() {}

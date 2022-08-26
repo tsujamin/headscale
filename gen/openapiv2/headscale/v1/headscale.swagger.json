@@ -16,6 +16,59 @@
     "application/json"
   ],
   "paths": {
+    "/api/v1/acl": {
+      "get": {
+        "summary": "--- Acls start ---",
+        "operationId": "HeadscaleService_GetAclPolicy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1GetAclPolicyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "tags": [
+          "HeadscaleService"
+        ]
+      },
+      "post": {
+        "operationId": "HeadscaleService_SetAclPolicy",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/v1SetAclPolicyResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response.",
+            "schema": {
+              "$ref": "#/definitions/rpcStatus"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/v1SetAclPolicyRequest"
+            }
+          }
+        ],
+        "tags": [
+          "HeadscaleService"
+        ]
+      }
+    },
     "/api/v1/apikey": {
       "get": {
         "operationId": "HeadscaleService_ListApiKeys",
@@ -752,6 +805,14 @@
         }
       }
     },
+    "v1AclPolicyFormat": {
+      "type": "string",
+      "enum": [
+        "ACL_POLICY_HUJSON",
+        "ACL_POLICY_YAML"
+      ],
+      "default": "ACL_POLICY_HUJSON"
+    },
     "v1ApiKey": {
       "type": "object",
       "properties": {
@@ -909,6 +970,20 @@
     },
     "v1ExpirePreAuthKeyResponse": {
       "type": "object"
+    },
+    "v1GetAclPolicyResponse": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "$ref": "#/definitions/v1AclPolicyFormat"
+        },
+        "hujsonPolicy": {
+          "type": "string"
+        },
+        "yamlPolicy": {
+          "type": "string"
+        }
+      }
     },
     "v1GetMachineResponse": {
       "type": "object",
@@ -1155,6 +1230,20 @@
           }
         }
       }
+    },
+    "v1SetAclPolicyRequest": {
+      "type": "object",
+      "properties": {
+        "jsonPolicy": {
+          "type": "string"
+        },
+        "yamlPolicy": {
+          "type": "string"
+        }
+      }
+    },
+    "v1SetAclPolicyResponse": {
+      "type": "object"
     },
     "v1SetTagsResponse": {
       "type": "object",

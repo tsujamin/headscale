@@ -88,6 +88,7 @@ require (
 	github.com/jinzhu/now v1.1.4 // indirect
 	github.com/josharian/native v1.0.0 // indirect
 	github.com/jsimonetti/rtnetlink v1.1.2-0.20220408201609-d380b505068b // indirect
+	github.com/juju/fslock v0.0.0-20160525022230-4d5c94c67b4b
 	github.com/kballard/go-shellquote v0.0.0-20180428030007-95032a82bc51 // indirect
 	github.com/kr/pretty v0.3.0 // indirect
 	github.com/kr/text v0.2.0 // indirect
